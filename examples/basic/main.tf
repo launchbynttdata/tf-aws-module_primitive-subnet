@@ -14,7 +14,7 @@ module "vpc" {
   source  = "terraform.registry.launch.nttdata.com/module_primitive/vpc/aws"
   version = "~> 1.0"
 
-  cidr_block = "10.0.0.0/16"
+  cidr_block = var.vpc_cidr_block
 }
 
 // Fix for Regula FG_R00089: VPC default security group should restrict all traffic [Medium]

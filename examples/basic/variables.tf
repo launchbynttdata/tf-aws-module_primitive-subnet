@@ -10,12 +10,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+variable "vpc_cidr_block" {
+  type        = string
+  description = "The IPv4 CIDR block for the VPC."
+}
+
 variable "cidr_block" {
   type        = string
-  description = ""
+  description = "The IPv4 CIDR block for the subnet."
 }
 
 variable "tags" {
   type        = map(string)
-  description = ""
+  description = "A map of tags to assign to the resource."
 }
