@@ -17,7 +17,7 @@ func TestComposableComplete(t *testing.T, ctx types.TestContext) {
 	awsClient := GetAWSEC2Client(t)
 
 	t.Run("TestIsDeployed", func(t *testing.T) {
-		subnetId := terraform.Output(t, ctx.TerratestTerraformOptions(), "subnet_id")
+		subnetId := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "subnet_id")
 		out, err := awsClient.DescribeSubnets(context.TODO(), &ec2.DescribeSubnetsInput{
 			SubnetIds: []string{subnetId},
 		})
@@ -30,7 +30,7 @@ func TestComposableComplete(t *testing.T, ctx types.TestContext) {
 	})
 
 	t.Run("TestIsAvailable", func(t *testing.T) {
-		subnetId := terraform.Output(t, ctx.TerratestTerraformOptions(), "subnet_id")
+		subnetId := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "subnet_id")
 		out, err := awsClient.DescribeSubnets(context.TODO(), &ec2.DescribeSubnetsInput{
 			SubnetIds: []string{subnetId},
 		})
@@ -43,8 +43,8 @@ func TestComposableComplete(t *testing.T, ctx types.TestContext) {
 	})
 
 	t.Run("TestCIDRBlock", func(t *testing.T) {
-		subnetId := terraform.Output(t, ctx.TerratestTerraformOptions(), "subnet_id")
-		subnetCidrBlock := terraform.Output(t, ctx.TerratestTerraformOptions(), "subnet_cidr_block")
+		subnetId := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "subnet_id")
+		subnetCidrBlock := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "subnet_cidr_block")
 		out, err := awsClient.DescribeSubnets(context.TODO(), &ec2.DescribeSubnetsInput{
 			SubnetIds: []string{subnetId},
 		})
@@ -57,8 +57,8 @@ func TestComposableComplete(t *testing.T, ctx types.TestContext) {
 	})
 
 	t.Run("TestAvailabilityZone", func(t *testing.T) {
-		subnetId := terraform.Output(t, ctx.TerratestTerraformOptions(), "subnet_id")
-		subnetAvailabilityZone := terraform.Output(t, ctx.TerratestTerraformOptions(), "subnet_availibility_zone")
+		subnetId := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "subnet_id")
+		subnetAvailabilityZone := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "subnet_availibility_zone")
 		out, err := awsClient.DescribeSubnets(context.TODO(), &ec2.DescribeSubnetsInput{
 			SubnetIds: []string{subnetId},
 		})
