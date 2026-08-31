@@ -52,7 +52,7 @@ variable "enable_lni_at_device_index" {
   default     = null
   validation {
     condition     = var.enable_lni_at_device_index == null || coalesce(var.enable_lni_at_device_index, 1) > 0
-    error_message = "enable_lni_at_device_index must be greather than 0"
+    error_message = "The enable_lni_at_device_index value must be greater than 0."
   }
 }
 
